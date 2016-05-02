@@ -1,0 +1,212 @@
+1: The 2 T0w3Rs
+2: 692734 01263412 0x129407FBA234E 012323489 0x12BBJ 01298730xBBBB0xBBBB
+3: ++==+*=*=-->--+=**()()(-++=-)
+4: *..,+-=-+==+[][-><-]&&&==&*=~
+5: //0xBBACEDFBABB21312/--=/=/%%=
+6: >>>>>===!=!==^=^^==|||==||
+7: ?:;.,'#{}@$$
+8:
+9: XxKE$HA4LYFExX
+10: 360NO_ScopesX0X420B1A53
+11: 0x
+12: 0x12.5
+13: 12.5.4.2.345.1e-400
+14: 0xx0xBBBB&#0x0x00xx
+15: (WORDS GO HERE)
+16: 013245623 0xBABC123X 01256728
+17: 0xABCDEFG2983729-->->>===
+18: tar cfv tokenizer.tar
+19: ./tokenizer 'This is a meta test case 0x1343 02323343258 9999999.999e12'
+
+Expected results: 
+
+1:
+word "The"
+decimal "2"
+word "T0w3Rs"
+
+2:
+decimal "692734"
+octal "01263412"
+hexidecimal "0x129407FBA234E"
+octal "0123234"
+decimal "89"
+hexidecimal "0x12BB"
+word "J"
+octal "012"
+decimal "98730"
+word "xBBBB0xBBBB"
+
+3:
+increment "++"
+equals "=="
+addition sign "+"
+times equals "*="
+times equals "*="
+decrement "--"
+greater than ">"
+decrement "--"
+plus equals "+="
+multiplication sign "*"
+multiplication sign "*"
+left parenthesis "("
+right parenthesis ")"
+left parenthesis "("
+right parenthesis ")"
+left parenthesis "("
+minus sign "-"
+increment "++"
+assignment "="
+minus sign "-"
+right parenthesis ")"
+
+4:
+multiplication sign "*"
+dot operator "."
+dot operator "."
+comma ","
+addition sign "+"
+minus equals "-="
+minus sign "-"
+plus equals "+="
+assignment "="
+addition sign "+"
+left bracket "["
+right bracket "]"
+left bracket "["
+struct pointer "->"
+less than "<"
+minus sign "-"
+right bracket "]"
+logical and "&&"
+bitwise and assignment "&="
+assignment "="
+bitwise and "&"
+times equals "*="
+1's complement "~"
+
+5:
+line comment "//"
+hexidecimal "0xBBACEDFBABB21312"
+divide "/"
+decrement "--"
+assignment "="
+divide equals "/="
+divide "/"
+modulus "%"
+modulus equals "%="
+
+6:
+shift right ">>"
+shift right ">>"
+greater or equal ">="
+equals "=="
+not equals "!="
+not equals "!="
+assignment "="
+bitwise exclusive or assignment "^="
+bitwise exclusive or "^"
+bitwise exclusive or assignment "^="
+assignment "="
+logical or "||"
+bitwise or assignment "|="
+assignment "="
+logical or "||"
+
+7:
+question mark "?"
+colon ":"
+semicolon ";"
+dot operator "."
+comma ","
+single quote "'"
+bad token [0x23] #
+open curly bracket "{"
+close curly bracket "}"
+bad token [0x40] @
+bad token [0x24] $
+bad token [0x24] $
+
+8:
+
+9:
+word "XxKE"
+bad token [0x24] $
+word "HA4LYFExX"
+
+10:
+decimal "360"
+word "NO"
+bad token [0x5F] _
+word "ScopesX0X420B1A53"
+
+11:
+decimal "0"
+word "x"
+
+12:
+hexidecimal "0x12"
+dot operator "."
+decimal "5"
+
+13:
+float "12.5"
+dot operator "."
+float "4.2"
+dot operator "."
+float "345.1e-400"
+
+14:
+decimal "0"
+word "xx0xBBBB"
+bitwise and "&"
+bad token [0x23] #
+hexidecimal "0x0"
+word "x00xx"
+
+15:
+left parenthesis "("
+word "WORDS"
+word "GO"
+word "HERE"
+right parenthesis ")"
+
+16:
+octal "013245623"
+hexidecimal "0xBABC123"
+word "X"
+octal "0125672"
+decimal "8"
+
+17:
+hexidecimal "0xABCDEF"
+word "G2983729"
+decrement "--"
+greater than ">"
+struct pointer "->"
+greater or equal ">="
+equals "=="
+
+18:
+word "tar"
+word "cfv"
+word "tokenizer"
+dot operator "."
+word "tar"
+
+19:
+dot operator "."
+divide "/"
+word "tokenizer"
+single quote "'"
+word "This"
+word "is"
+word "a"
+word "meta"
+word "test"
+word "case"
+hexidecimal "0x1343"
+octal "0232334325"
+decimal "8"
+float "9999999.999e12"
+single quote "'"

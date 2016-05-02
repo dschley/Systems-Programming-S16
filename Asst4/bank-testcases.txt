@@ -1,0 +1,251 @@
+Daniel Schley
+Ryan Dunn
+
+tests: run client before server, run client with no arguments
+
+client:
+./client **********(valid address)
+Attempting to connect to server...
+Attempting to connect to server...
+
+server:
+./server
+
+client:
+You are connected
+Accepted commands are: open, start, exit
+
+input:
+./client
+
+output:
+ERROR: must specify server's location
+
+
+tests: try to open accounts of same name, try to start same account on different clients, run out of account space
+input:
+client 1:
+You are connected
+Accepted commands are: open, start, exit
+open a
+Account created
+Accepted commands are: open, start, exit
+open b
+Account created
+Accepted commands are: open, start, exit
+open c
+Account created
+Accepted commands are: open, start, exit
+open d
+Account created
+Accepted commands are: open, start, exit
+open e
+Account createdAccepted commands are: open, start, exit
+open a
+Account already exists
+Accepted commands are: open, start, exit
+open f
+Account created
+Accepted commands are: open, start, exit
+open g
+Account created
+Accepted commands are: open, start, exit
+open h
+Account created
+Accepted commands are: open, start, exit
+open i
+Account created
+Accepted commands are: open, start, exit
+open j
+Account created
+Accepted commands are: open, start, exit
+open k
+Account created
+Accepted commands are: open, start, exit
+open l
+Account created
+Accepted commands are: open, start, exit
+open m
+Account created
+Accepted commands are: open, start, exit
+open n
+Account created
+Accepted commands are: open, start, exit
+open o
+Account created
+Accepted commands are: open, start, exit
+open p
+Account created
+Accepted commands are: open, start, exit
+open q
+Account created
+Accepted commands are: open, start, exit
+open r
+Account created
+Accepted commands are: open, start, exit
+open s
+Account created
+Accepted commands are: open, start, exit
+open t
+Account created
+Accepted commands are: open, start, exit
+open u
+Bank is full
+Accepted commands are: open, start, exit
+
+server status:
+bank status:
+account 0: [Name: a, Balance: 0.00] 
+account 1: [Name: b, Balance: 0.00]
+account 2: [Name: c, Balance: 0.00]
+account 3: [Name: d, Balance: 0.00]
+account 4: [Name: e, Balance: 0.00]
+account 5: [Name: f, Balance: 0.00]
+account 6: [Name: g, Balance: 0.00]
+account 7: [Name: h, Balance: 0.00]
+account 8: [Name: i, Balance: 0.00]
+account 9: [Name: j, Balance: 0.00]
+account 10: [Name: k, Balance: 0.00]
+account 11: [Name: l, Balance: 0.00]
+account 12: [Name: m, Balance: 0.00]
+account 13: [Name: n, Balance: 0.00]
+account 14: [Name: o, Balance: 0.00]
+account 15: [Name: p, Balance: 0.00]
+account 16: [Name: q, Balance: 0.00]
+account 17: [Name: r, Balance: 0.00]
+account 18: [Name: s, Balance: 0.00]
+account 19: [Name: t, Balance: 0.00]
+
+client 1:
+start a
+
+client 2:
+start a
+Waiting to begin session. One moment...
+Waiting to begin session. One moment...
+
+server status:
+bank status:
+account 0: [Name: a, Balance: 0.00] IN SERVICE
+account 1: [Name: b, Balance: 0.00]
+account 2: [Name: c, Balance: 0.00]
+account 3: [Name: d, Balance: 0.00]
+account 4: [Name: e, Balance: 0.00]
+account 5: [Name: f, Balance: 0.00]
+account 6: [Name: g, Balance: 0.00]
+account 7: [Name: h, Balance: 0.00]
+account 8: [Name: i, Balance: 0.00]
+account 9: [Name: j, Balance: 0.00]
+account 10: [Name: k, Balance: 0.00]
+account 11: [Name: l, Balance: 0.00]
+account 12: [Name: m, Balance: 0.00]
+account 13: [Name: n, Balance: 0.00]
+account 14: [Name: o, Balance: 0.00]
+account 15: [Name: p, Balance: 0.00]
+account 16: [Name: q, Balance: 0.00]
+account 17: [Name: r, Balance: 0.00]
+account 18: [Name: s, Balance: 0.00]
+account 19: [Name: t, Balance: 0.00]
+
+
+
+tests: credit, debit, balance, finish, exit from client, exit from client during session
+input:
+client 1:
+start a
+Connected
+Accepted commands are: credit, debit, balance, finish, exit
+debit 5
+Bad amount
+Accepted commands are: credit, debit, balance, finish, exit
+credit 5
+Account credited
+Accepted commands are: credit, debit, balance, finish, exit
+debit 6
+Bad amount
+Accepted commands are: credit, debit, balance, finish, exit
+debit 1
+Account debited
+Accepted commands are: credit, debit, balance, finish, exit
+balance
+4.00
+Accepted commands are: credit, debit, balance, finish, exit
+finish
+Finished session
+Accepted commands are: open, start, exit
+exit
+Exiting
+
+client 2:
+start a
+Connected
+Accepted commands are: credit, debit, balance, finish, exit
+exit
+Exiting
+
+server status:
+new client connected
+new client connected
+bank status:
+account 0: [Name: a, Balance: 4.00]
+account 1: [Name: b, Balance: 0.00]
+account 2: [Name: c, Balance: 0.00]
+account 3: [Name: d, Balance: 0.00]
+account 4: [Name: e, Balance: 0.00]
+account 5: [Name: f, Balance: 0.00]
+account 6: [Name: g, Balance: 0.00]
+account 7: [Name: h, Balance: 0.00]
+account 8: [Name: i, Balance: 0.00]
+account 9: [Name: j, Balance: 0.00]
+account 10: [Name: k, Balance: 0.00]
+account 11: [Name: l, Balance: 0.00]
+account 12: [Name: m, Balance: 0.00]
+account 13: [Name: n, Balance: 0.00]
+account 14: [Name: o, Balance: 0.00]
+account 15: [Name: p, Balance: 0.00]
+account 16: [Name: q, Balance: 0.00]
+account 17: [Name: r, Balance: 0.00]
+account 18: [Name: s, Balance: 0.00]
+account 19: [Name: t, Balance: 0.00]
+client disconnected
+client disconnected
+
+
+
+tests: interrupt from client, interrupt from client within session,  interrupt from server
+input:
+client 1:
+You are connected
+Accepted commands are: open, start, exit
+^C
+
+server status:
+new client connected
+Client interrupted, goodbye
+
+client 1: 
+You are connected
+Accepted commands are: open, start, exit
+start a
+Connected
+Accepted commands are: credit, debit, balance, finish, exit
+^C
+
+server status:
+new client connected
+Client interrupted, goodbye
+client disconnected
+
+server ctrl-c with client 1 in session, client 2 not in session but still connected to server:
+
+server:
+^CServer down. Bye bye.
+client disconnected
+client disconnected
+
+client 1:
+Exiting
+
+client 2:
+Exiting
+

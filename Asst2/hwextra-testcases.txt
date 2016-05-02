@@ -1,0 +1,79 @@
+TESTCASE 1:
+Input:
+char* a=(char*)malloc(1000);
+char* b=(char*)malloc(1000);
+char* c=(char*)malloc(1000);
+char* d=(char*)malloc(1000);
+char* e=(char*)malloc(1000);
+free(a);
+free(b);
+free(c);
+free(d);
+free(e);
+Output:
+Sorry! On line 11 in the file test1.c malloc was unable to give you memory of that size
+In file test1.c, line 16, you tried to free a pointer that you never allocated
+
+TESTCASE 2:
+Input:
+char* a=(char*)malloc(5);
+char* b=(char*)malloc(5);
+char* c=(char*)malloc(5);
+*a = 'a';
+*b = 'b';
+*c = 'c';
+printf("a = %c, b = %c, c = %c\n", *a, *b, *c);
+free(a);
+free(a);
+char* t=(char*)malloc(5);
+*t = 't';
+printf("a = %c, b = %c, c = %c, t = %c\n", *a, *b, *c, *t);
+Output:
+a = a, b = b, c = c
+In file test2.c, line 15, you tried to free an already freed pointer
+a = t, b = b, c = c, t = t
+
+
+TESTCASE 3:
+Input:
+char* a=(char*)malloc(1000);
+char* b=(char*)malloc(1000);
+char* c=(char*)malloc(1000);
+char* d=(char*)malloc(1000);
+char* e=(char*)malloc(500);
+*a = 'a';
+*b = 'b';
+*c = 'c';
+*d = 'd';
+*e = 'e';
+free(b);
+free(d + 3);
+free(d);
+free(c);
+char* bigone = (char*)malloc(3000);
+*bigone = 'B';
+printf("a = %c, b = %c, c = %c, big = %c", a, b, c, bigone);
+Output:
+In file test3.c, line 18, you tried to free an offset of a pointer, which is bad
+a = a, b = B, c = c, big = B
+
+TESTCASE 4:
+Input:
+char* a=(char*)malloc(5000);
+free(a);
+Output:
+Sorry! On line 7 in the file test4.c malloc was unable to give you memory of that size
+In file test4.c, line 8, you tried to free a pointer that you never allocated
+
+
+TESTCASE 5:
+Input:
+for(int i = 0; i < 20; i++)
+{
+	malloc(250);
+}
+Output:
+Sorry! On line 9 in the file test5.c malloc was unable to give you memory of that size
+Sorry! On line 9 in the file test5.c malloc was unable to give you memory of that size
+Sorry! On line 9 in the file test5.c malloc was unable to give you memory of that size
+

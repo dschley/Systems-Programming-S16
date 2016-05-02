@@ -1,0 +1,6 @@
+Daniel Schley
+Ryan Dunn
+
+This program simulates malloc and free by providing memory placed on a "heap" which is a static 5000 character array.  Malloc and free also provide error messages when memory cannot be allocated, when trying to allocate 0 or less bytes, trying to free an offset pointer, trying to free a pointer that was never allocated, and trying to free a pointer that was already freed.
+
+The memory was kept track of on the heap with structs called blocks that keep track of the previous block, next block, size of the space allocated for the pointer, whether the pointer was freed, and an id to make ensure that you are looking at a block instead of some offset part of memory.  The id, size, and open fields are all shorts in order to avoid using unnecessary extra space.

@@ -1,0 +1,207 @@
+testplan
+Daniel Schley
+Ryan Dunn
+
+I made directories and files that will test calling the index on a file, calling it on a directory that holds files and directories which hold other files, calling it on a directory that holds nothing, calling it on a directory that holds a file with nothing in it, calling it on a path that doesnt exist, and calling it on a directory with files without read permission.
+
+To test scalability the indexer was run on a directory which I keep all
+ of my computer science class's assignments and the output file produced was over 100 kb.  In addition to that I generated 10 files of 100,000 bytes of random words each, put them into a directory, and the indexer produced an output file of about 1.4 Mb.
+
+path: file={"this is a single file"}
+input: ./index output.txt file
+output.txt:
+{"list" : [
+	{"a" : [
+		{"file" : 1}
+	]},
+	{"file" : [
+		{"file" : 1}
+	]},
+	{"is" : [
+		{"file" : 1}
+	]},
+	{"single" : [
+		{"file" : 1}
+	]},
+	{"this" : [
+		{"file" : 1}
+	]}
+]}
+
+
+path: d1={d2,d3,f1,f2},d2={f3},d3={f3}
+d1/f1={"a b c d e f g"}
+d1/f2={"h i j k l m n This an$example12 mail@rutgers"}
+d1/d2/f3={"this is f3 number1"}
+d1/d3/f3={"this is f3 number2 a b c l m n"}
+
+input: ./index output.txt d1
+output.txt:
+{"list" : [
+	{"a" : [
+		{"f1" : 1},
+		{"f3" : 1}
+	]},
+	{"an" : [
+		{"f2" : 1}
+	]},
+	{"b" : [
+		{"f1" : 1},
+		{"f3" : 1}
+	]},
+	{"c" : [
+		{"f1" : 1},
+		{"f3" : 1}
+	]},
+	{"d" : [
+		{"f1" : 1}
+	]},
+	{"e" : [
+		{"f1" : 1}
+	]},
+	{"example12" : [
+		{"f2" : 1}
+	]},
+	{"f" : [
+		{"f1" : 1}
+	]},
+	{"f3" : [
+		{"f3" : 2}
+	]},
+	{"g" : [
+		{"f1" : 1}
+	]},
+	{"h" : [
+		{"f2" : 1}
+	]},
+	{"i" : [
+		{"f2" : 1}
+	]},
+	{"is" : [
+		{"f3" : 2}
+	]},
+	{"j" : [
+		{"f2" : 1}
+	]},
+	{"k" : [
+		{"f2" : 1}
+	]},
+	{"l" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"m" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"mail" : [
+		{"f2" : 1}
+	]},
+	{"n" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"number1" : [
+		{"f3" : 1}
+	]},
+	{"number2" : [
+		{"f3" : 1}
+	]},
+	{"rutgers" : [
+		{"f2" : 1}
+	]},
+	{"this" : [
+		{"f3" : 2},
+		{"f2" : 1}
+	]}
+]}
+
+path: nothing={}
+input:./index output.txt nothing
+output.txt:
+{"list" : [
+
+]}
+
+
+path: hasepmty={empty}
+empty={""}
+input: ./index output.txt hasempty
+output.txt:
+{"list" : [
+
+]}
+
+
+input: ./index output.txt notarealpath
+output: The directory you entered doesn't exist
+
+
+path: d1={d2,d3,f1,f2},d2={f3},d3={f3}
+d1/f1={"a b c d e f g"} *NO READ PERMISSION*
+d1/f2={"h i j k l m n This an$example12 mail@rutgers"}
+d1/d2/f3={"this is f3 number1"} *NO READ PERMISSION*
+d1/d3/f3={"this is f3 number2 a b c l m n"} 
+
+input: ./index output.txt d1
+output.txt:
+{"list" : [
+	{"a" : [
+		{"f3" : 1}
+	]},
+	{"an" : [
+		{"f2" : 1}
+	]},
+	{"b" : [
+		{"f3" : 1}
+	]},
+	{"c" : [
+		{"f3" : 1}
+	]},
+	{"example12" : [
+		{"f2" : 1}
+	]},
+	{"f3" : [
+		{"f3" : 1}
+	]},
+	{"h" : [
+		{"f2" : 1}
+	]},
+	{"i" : [
+		{"f2" : 1}
+	]},
+	{"is" : [
+		{"f3" : 1}
+	]},
+	{"j" : [
+		{"f2" : 1}
+	]},
+	{"k" : [
+		{"f2" : 1}
+	]},
+	{"l" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"m" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"mail" : [
+		{"f2" : 1}
+	]},
+	{"n" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]},
+	{"number2" : [
+		{"f3" : 1}
+	]},
+	{"rutgers" : [
+		{"f2" : 1}
+	]},
+	{"this" : [
+		{"f2" : 1},
+		{"f3" : 1}
+	]}
+]}

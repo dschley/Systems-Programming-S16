@@ -1,0 +1,6 @@
+Daniel Schley
+Ryan Dunn
+
+testplan
+
+The tests run test several features on both the server and client side.  Server side tests include interrupt from server side, proper messages for client interactions, and the bank status updates.  Client side tests include starting client before the server, opening accounts, opening accounts of the same name, trying to open more than the maximum number of available accounts, starting multiple sessions of the same account, crediting account, debiting account, seeing account balance, finishing session, exiting during and not during sessions, and interrupting during and not during sessions.
